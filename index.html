@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.cdnfonts.com/css/canva-sans" rel="stylesheet" />
+    <title>BackPix</title>
+  </head>
+  <body class="bg-neutral-soft-bg">
+    <header class="relative bg-white shadow-sm">
+      <div class="flex justify-between items-center p-4 max-w-7xl mx-auto">
+        <!-- Logo -->
+        <div class="Logo">
+          <p class="text-brand-dark-navy text-3xl font-bold cursor-pointer">
+            BackPix
+          </p>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:block">
+          <ul class="flex gap-6 font-medium text-brand-dark-navy">
+            <li
+              class="cursor-pointer hover:text-brand-primary-blue transition-colors"
+            >
+              <a href="#">Home</a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-brand-primary-blue transition-colors"
+            >
+              <a href="#">How it Works</a>
+            </li>
+            <li
+              class="cursor-pointer hover:text-brand-primary-blue transition-colors"
+            >
+              <a href="#">Contact</a>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Desktop Get Started Button -->
+        <button
+          onclick="handleGoogleLogin()"
+          class="hidden md:block bg-brand-primary-blue/70 hover:bg-brand-primary-blue text-white px-4 py-2 rounded-md cursor-pointer font-medium transition-colors"
+        >
+          Get Started
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button
+          id="mobile-menu-button"
+          class="md:hidden flex flex-col justify-center items-center w-8 h-8 cursor-pointer"
+          aria-label="Toggle mobile menu"
+        >
+          <span
+            class="hamburger-line bg-brand-dark-navy h-0.5 w-6 rounded-full transition-all duration-300 ease-in-out"
+          ></span>
+          <span
+            class="hamburger-line bg-brand-dark-navy h-0.5 w-6 rounded-full transition-all duration-300 ease-in-out mt-1"
+          ></span>
+          <span
+            class="hamburger-line bg-brand-dark-navy h-0.5 w-6 rounded-full transition-all duration-300 ease-in-out mt-1"
+          ></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="hidden"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="translate-x-full">
+      <!-- Mobile Menu Header -->
+      <div
+        class="flex justify-between items-center p-4 border-b border-neutral-light-gray"
+      >
+        <p class="text-brand-dark-navy text-xl font-bold">Menu</p>
+        <button
+          id="mobile-menu-close"
+          class="flex items-center justify-center w-8 h-8 text-brand-dark-navy hover:text-brand-primary-blue"
+          aria-label="Close mobile menu"
+        >
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Content -->
+      <nav class="flex flex-col p-4">
+        <ul class="space-y-4">
+          <li>
+            <a
+              href="#"
+              class="block py-3 px-4 text-brand-dark-navy font-medium hover:text-brand-primary-blue hover:bg-brand-primary-blue/5 rounded-lg transition-all duration-200"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block py-3 px-4 text-brand-dark-navy font-medium hover:text-brand-primary-blue hover:bg-brand-primary-blue/5 rounded-lg transition-all duration-200"
+            >
+              How it Works
+            </a>
+          </li>
+          <li>
+            <a
+              href="#"
+              class="block py-3 px-4 text-brand-dark-navy font-medium hover:text-brand-primary-blue hover:bg-brand-primary-blue/5 rounded-lg transition-all duration-200"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+
+        <!-- Mobile Get Started Button -->
+        <div class="mt-8 pt-4 border-t border-neutral-light-gray">
+          <button
+            onclick="handleGoogleLogin()"
+            class="w-full bg-brand-primary-blue hover:bg-brand-primary-blue/80 text-white py-3 px-4 rounded-lg font-medium transition-colors"
+          >
+            Get Started
+          </button>
+        </div>
+      </nav>
+    </div>
+
+    <section class="grid w-full justify-center mx-auto mt-[5rem]">
+      <div
+        class="grid gap-4 header text-center text-brand-dark-navy font-medium"
+      >
+        <h1 class="text-4xl font-bold">Transform Your Photos Instantly</h1>
+        <p>
+          Upload your image, add a prompt, and create stunning scenes in seconds
+        </p>
+      </div>
+    </section>
+
+    <!-- Dropzone Section -->
+    <section class="max-w-4xl mx-auto mt-12 px-4">
+      <div
+        class="bg-white rounded-xl shadow-sm border border-neutral-light-gray p-8"
+      >
+        <!-- Dropzone -->
+        <div id="dropzone" class="dropzone-container">
+          <div class="dropzone-content">
+            <div class="dropzone-icon">
+              <svg
+                class="w-12 h-12 text-neutral-medium-gray"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-brand-dark-navy mb-2">
+              Drop your image here
+            </h3>
+            <p class="text-neutral-medium-gray mb-4">
+              or click to browse files
+            </p>
+            <button class="browse-button">Browse Files</button>
+            <p class="text-sm text-neutral-medium-gray mt-3">
+              Supports: JPG, PNG, GIF, WebP (Max 10MB) • 0/3 images
+            </p>
+          </div>
+          <input
+            type="file"
+            id="file-input"
+            class="hidden"
+            accept="image/*"
+            multiple
+          />
+        </div>
+
+        <!-- Upload Progress -->
+        <div id="upload-progress" class="hidden mt-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm font-medium text-brand-dark-navy"
+              >Uploading...</span
+            >
+            <span
+              id="progress-percentage"
+              class="text-sm text-neutral-medium-gray"
+              >0%</span
+            >
+          </div>
+          <div class="w-full bg-neutral-light-gray rounded-full h-2">
+            <div
+              id="progress-bar"
+              class="bg-brand-primary-blue h-2 rounded-full transition-all duration-300"
+              style="width: 0%"
+            ></div>
+          </div>
+        </div>
+
+        <!-- Preview Area -->
+        <div id="preview-area" class="hidden mt-6">
+          <h4 class="text-lg font-semibold text-brand-dark-navy mb-4">
+            Preview
+          </h4>
+          <div
+            id="image-previews"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            <!-- Preview images will be inserted here -->
+          </div>
+        </div>
+
+        <!-- Prompt Section -->
+        <div id="prompt-section" class="hidden mt-8">
+          <label
+            for="image-prompt"
+            class="block text-lg font-semibold text-brand-dark-navy mb-3"
+          >
+            Describe your transformation
+          </label>
+          <textarea
+            id="image-prompt"
+            rows="3"
+            class="w-full px-4 py-3 border border-neutral-light-gray rounded-lg focus:ring-2 focus:ring-brand-primary-blue focus:border-transparent resize-none"
+            placeholder="Describe how you want to transform your image (e.g., 'make it look like a vintage photograph' or 'add a sunset background')..."
+          ></textarea>
+          <div class="flex justify-center mt-6">
+            <button
+              id="transform-button"
+              class="bg-brand-primary-blue hover:bg-brand-primary-blue/80 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            >
+              Transform Image
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
